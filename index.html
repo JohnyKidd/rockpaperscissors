@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<script>
+let playerPoints=0;
+let computerPoints=0;
+
+function playRound(playerSelection, computerSelection){
+    
+    //PLAYER SELECTION//
+    playerSelection=prompt("Choose Rock, Paper or Scissors!").toLocaleLowerCase();
+    console.log("Player selected:",playerSelection);
+    
+    //GENERATING COMPUTER SELECTION//
+    computerSelection=Math.random()*3;
+    
+    //CONVERTING//
+    if(computerSelection>0 && computerSelection<1){
+        computerSelection="Rock!";
+        console.log("Computer selected: ",computerSelection);
+    }
+    else if(computerSelection>1 && computerSelection<2){
+        computerSelection="Paper!";
+        console.log("Computer selected: ",computerSelection);
+    }
+    else if(computerSelection>2 && computerSelection<=3){
+        computerSelection="Scissors!"
+        console.log("Computer selected: ",computerSelection);
+    }
+    //DRAW CONDITIONS//
+    if (computerSelection=="Rock!" && playerSelection=="rock"){
+        console.log("!!!DRAW!!!");
+    }
+    else if(computerSelection=="Paper!" && playerSelection=="paper"){
+        console.log("!!!DRAW!!!");
+    }
+    else if(computerSelection=="Paper!" && playerSelection=="paper"){
+        console.log("!!!DRAW!!!");
+    }
+    //COMPUTER WIN CONDITIONS//
+    else if(computerSelection=="Rock!" && playerSelection=="scissors"){
+        console.log("!!!THE COMPUTER HAS WON!!!");
+        computerPoints++;
+    }
+    else if(computerSelection=="Paper!" && playerSelection=="rock"){
+        console.log("!!!THE COMPUTER HAS WON!!!");
+        computerPoints++;
+    }
+    else if(computerSelection=="Scissors!" && playerSelection=="paper"){
+        console.log("!!!THE COMPUTER HAS WON!!!");
+        computerPoints++;
+    }
+    //PLAYER WIN CONDITIONS//
+    else if(computerSelection=="Rock!" && playerSelection=="paper"){
+        console.log("!!!THE PLAYER HAS WON!!!");
+        playerPoints++;
+    }
+     else if(computerSelection=="Paper!" && playerSelection=="scissors"){
+        console.log("!!!THE PLAYER HAS WON!!!");
+        playerPoints++;
+    }
+     else if(computerSelection=="Scissors!" && playerSelection=="rock"){
+        console.log("!!!THE PLAYER HAS WON!!!");
+        playerPoints++;
+    }
+}
+    
+function game(){
+    for(let i=0;i<=4;i++){
+        playRound();
+        console.log("Player's points: ",playerPoints);
+        console.log("Computer's points: ",computerPoints);
+    }
+    if(playerPoints==computerPoints){
+        console.log("DRAW GAME!!!");
+    }
+    else if(playerPoints>>computerPoints){
+        console.log("The player has won the game!");
+    }
+    else{
+        console.log("The computer has won the game!");
+    }
+}
+
+game();
+</script>
+
+<html>
+<head></head>
+<body></body>
+</html>
