@@ -1,1 +1,1 @@
-# rockpaperscissors
+# rockpaperscissors for the odin project
