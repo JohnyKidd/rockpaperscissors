@@ -1,0 +1,77 @@
+*{
+  background-color: black;
+}
+html{
+
+}
+
+.mainContainer
+{
+  position:absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left:0;
+  border:solid 2px black;
+  overflow:auto;
+  border: 2em groove #bfa58a;
+}
+
+#buttonContainer{
+  display: flex;
+  justify-content: center;
+  gap: 10em;
+}
+
+.imgButton{
+  max-width: 10%
+}
+
+#rockButton{
+  border: 2em groove #800;
+}
+
+#paperButton{
+  border: 2em groove #800;
+}
+
+#scissorsButton{
+  border: 2em groove #800;
+}
+
+#rockButton:hover{
+  background-color: #bfa58a;
+}
+
+#paperButton:hover{
+  background-color: #bfa58a;
+}
+
+#scissorsButton:hover{
+  background-color: #bfa58a;
+}
+
+.pointLabel{
+  color:#800;
+  font-family: monospace;
+  font-size: 2em;
+  background-color: #bfa58a;
+}
+
+#scoreDiv{
+  background-color: #bfa58a;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 50%;
+  align-items: center;
+  margin-top: 5em;
+  border: 2em groove #800;
+}
+
+button{
+  background-color:#800;
+  color: #786550;
+  padding: 2em;
+  font-size: 1em;
+}

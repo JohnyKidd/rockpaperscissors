@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+
+<html>
+<div class="mainContainer">
+<head>
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id = "buttonContainer">
+    <input type="image" class = "imgButton" id = "rockButton" alt="Rock" src="rock.png"/>
+    <input type="image" class = "imgButton" id = "paperButton" alt="Paper" src="paper.png"/>
+    <input type="image" class = "imgButton" id = "scissorsButton" alt="Scissors" src="scissors.png"/>
+  </div>
+  <div id = "scoreDiv">
+    <h1 class="pointLabel" id = "SelectionShowLabel"></h1>
+    <h1 class="pointLabel" id = "resultLabel"></h1>
+    <h2 id="computerPointShow" class="pointLabel"></h2>
+    <h2 id=playerPointShow class="pointLabel"></h2>
+  </div>
+</div>
+</body>
+
+<script>
+//DECLARE VITAL VARIABLES//
+let playerPoints=0;
+let computerPoints=0;
+let computerSelection=0;
+let playerSelection = "";
+
+//DECLARES FOR SELECTION MANIPULATION//
+const scoreTable = document.querySelector('#scoreDiv');
+const playerHandRock = document.querySelector('#rockButton');
+const playerHandPaper = document.querySelector('#paperButton');
+const playerHandScissors = document.querySelector('#scissorsButton');
+
+//DECLARES FOR RESULT MANIPULATION//
+const roundResult = document.querySelector("#resultLabel");
+const computerPointsLabel = document.querySelector("#computerPointShow");
+const playerPointsLabel = document.querySelector("#playerPointShow");
+const selectionShowLabelObject = document.querySelector("#SelectionShowLabel");
+
+function playRound(computerSelection, playerSelection){
+
+  //COMPUTER SELECTS HAND BY RANDOM//
+  computerSelection=Math.random()*3;
+
+  //CONVERTING//
+   if(computerSelection>0 && computerSelection<1){
+       computerSelection="Rock!";
+       console.log("Computer selected: ",computerSelection);
+       selectionShowLabelObject.innerHTML="Computer selected: "+computerSelection;
+   }
+   else if(computerSelection>1 && computerSelection<2){
+       computerSelection="Paper!";
+       console.log("Computer selected: ",computerSelection);
+       selectionShowLabelObject.innerHTML="Computer selected: "+computerSelection;
+   }
+   else if(computerSelection>2 && computerSelection<=3){
+       computerSelection="Scissors!"
+       console.log("Computer selected: ",computerSelection);
+       selectionShowLabelObject.innerHTML="Computer selected: "+computerSelection;
+   }
+   //GAME LOGIC
+
+   //DRAW CONDITIONS//
+     if (computerSelection=="Rock!" && playerSelection=="rock"){
+         console.log("!!!DRAW!!!");
+         roundResult.innerHTML="Draw round... sorry!";
+     }
+     else if(computerSelection=="Paper!" && playerSelection=="paper"){
+         console.log("!!!DRAW!!!");
+         roundResult.innerHTML="Draw round... sorry!";
+     }
+     else if(computerSelection=="Paper!" && playerSelection=="paper"){
+         console.log("!!!DRAW!!!");
+         roundResult.innerHTML="Draw round... sorry!";
+     }
+     //COMPUTER WIN CONDITIONS//
+     else if(computerSelection=="Rock!" && playerSelection=="scissors"){
+         console.log("!!!THE COMPUTER HAS WON!!!");
+         computerPoints++;
+         computerPointsLabel.innerHTML="Computer's points: "+computerPoints;
+         roundResult.innerHTML="The Computer Wins the round!!";
+     }
+     else if(computerSelection=="Paper!" && playerSelection=="rock"){
+         console.log("!!!THE COMPUTER HAS WON!!!");
+         computerPoints++;
+         computerPointsLabel.innerHTML="Computer's points: "+computerPoints;
+         roundResult.innerHTML="The Computer Wins the round!!";
+     }
+     else if(computerSelection=="Scissors!" && playerSelection=="paper"){
+         console.log("!!!THE COMPUTER HAS WON!!!");
+         computerPoints++;
+         computerPointsLabel.innerHTML="Computer's points: "+computerPoints;
+         roundResult.innerHTML="The Computer Wins the round!!";
+     }
+     //PLAYER WIN CONDITIONS//
+     else if(computerSelection=="Rock!" && playerSelection=="paper"){
+         console.log("!!!THE PLAYER HAS WON!!!");
+         playerPoints++;
+         playerPointsLabel.innerHTML="Player's points: "+playerPoints;
+         roundResult.innerHTML="The Player Wins the round!!";
+     }
+      else if(computerSelection=="Paper!" && playerSelection=="scissors"){
+         console.log("!!!THE PLAYER HAS WON!!!");
+         playerPoints++;
+         playerPointsLabel.innerHTML="Player's points: "+playerPoints;
+         roundResult.innerHTML="The Player Wins the round!!";
+     }
+      else if(computerSelection=="Scissors!" && playerSelection=="rock"){
+         console.log("!!!THE PLAYER HAS WON!!!");
+         playerPoints++;
+         playerPointsLabel.innerHTML="Player's points: "+playerPoints;
+         roundResult.innerHTML="The Player Wins the round!!";
+     }
+ }
+
+//CHECKS IF THE GAME HAS COME TO AN END//
+ function check(){
+   if (computerPoints>=5){
+     roundResult.innerHTML="THE COMPUTER HAS WON THE GAME!";
+     computerPointsLabel.innerHTML="";
+     playerPointsLabel.innerHTML="<button>NEW GAME</button>";
+     selectionShowLabelObject.innerHTML="";
+     playerPointsLabel.onclick=function(){
+       main();
+     }
+   }
+   else if(playerPoints>=5){
+     roundResult.innerHTML="THE PLAYER HAS WON THE GAME!";
+     computerPointsLabel.innerHTML="";
+     playerPointsLabel.innerHTML="<button>NEW GAME</button>";
+     selectionShowLabelObject.innerHTML="";
+     playerPointsLabel.onclick=function(){
+       main();
+     }
+   }
+ }
+
+function main(){
+
+  //SET THE INITIAL STATE OF THE GAME//
+  playerPoints=0;
+  computerPoints=0;
+  computerSelection=0;
+  playerSelection = "";
+
+  roundResult.innerHTML="LET THE GAME BEGIN!!! CHOOSE YOUR DESTINY!";
+  selectionShowLabelObject.innerHTML="Computer selected: Nothing yet...";
+  computerPointsLabel.innerHTML="Computer's points: 0";
+  playerPointsLabel.innerHTML="Player's points: 0";
+
+//ADDING EVENT LISTENERS TO THE PLAYER BUTTONS WITH FUNCTIONS & WAITING FOR INPUT//
+playerHandRock.onclick = function(){
+    playerSelection="rock";
+    playRound(computerSelection, playerSelection);
+    console.log("Player Selection = ",playerSelection);
+    check();
+}
+
+playerHandPaper.onclick = function(){
+    playerSelection="paper";
+    playRound(computerSelection, playerSelection);
+    console.log("Player Selection = ",playerSelection);
+    check();
+}
+
+playerHandScissors.onclick = function(){
+    playerSelection="scissors";
+    playRound(computerSelection, playerSelection);
+    console.log("Player Selection = ",playerSelection);
+    check();
+}
+}
+main();
+
+</script>
+</html>
